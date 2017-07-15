@@ -1,0 +1,21 @@
+# 安装 wildfly-swarm 插件
+addon-install-from-git --url https://github.com/forge/wildfly-swarm-addon.git --coordinate org.jboss.forge.addon:wildfly-swarm
+
+# 安装 arquillian 插件
+addon-install-from-git --url https://github.com/forge/arquillian-addon.git --coordinate org.arquillian.forge:arquillian-addon
+
+# 安装 keycloak 插件
+addon-install-from-git --url https://github.com/forge/keycloak-addon.git --coordinate org.keycloak.forge.addon:keycloak
+
+
+# 创建项目
+project-new --named multi-tenant --top-level-package net.yohol.multitenant --type wildfly-swarm --stack JAVA_EE_7 --build-system Maven --context-path /multi-tenant
+
+# 安装 Git
+git-setup
+
+# 安装 CDI：添加 beans.xml
+cdi-setup
+
+# 安装 Bean Validation：添加 validation.xml
+constraint-setup
