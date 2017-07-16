@@ -9,7 +9,7 @@ addon-install-from-git --url https://github.com/forge/keycloak-addon.git --coord
 
 
 # 创建项目
-project-new --named multi-tenant --top-level-package net.yohol.multitenant --type wildfly-swarm --stack JAVA_EE_7 --build-system Maven --context-path /multi-tenant
+project-new --named multi-tenant --top-level-package net.yohol.multitenant --type wildfly-swarm --stack JAVA_EE_7 --build-system Maven --context-path /multitenant --final-name multitenant
 
 # 安装 Git
 git-setup
@@ -22,3 +22,13 @@ constraint-setup
 
 # 安装 Fractions
 wildfly-swarm-add-fraction --fractions ejb hibernate-validator cdi-jaxrsapi cdi jaxrs-validator keycloak
+
+# 启动 Keycloak Server，并导入 keycloak 目录下的两个 *-realm.json 文件，以创建相应的 Realm。
+
+#?? 安装客户端 Keycloak Json 以启用 Keycloak。确保每个Realm中，该客户端的 Direct Access Grants Enabled 被启用（ON）
+keycloak-install-client-json --server-url http://localhost:8080/auth --realm tenant1 --client-id multi-tenant --user user-tenant1 --password user-tenant1
+keycloak-install-client-json --server-url http://localhost:8080/auth --realm tenant2 --client-id multi-tenant --user user-tenant2 --password user-tenant2
+
+# 配置 web.xml
+security-add-login-config --auth-method KEYCLOAK --security-realm not-important
+security-add-constraint --web-resource-name HelloWorld --url-patterns /hello --security-roles user
