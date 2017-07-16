@@ -19,3 +19,6 @@ cdi-setup
 
 # 安装 Bean Validation：添加 validation.xml
 constraint-setup
+
+# 安装 Fractions
+wildfly-swarm-add-fraction --fractions ejb hibernate-validator cdi-jaxrsapi cdi jaxrs-validator keycloak
