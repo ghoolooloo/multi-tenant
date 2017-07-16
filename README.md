@@ -22,9 +22,9 @@
 <server>
     <id>docker-registry</id>
     <username>sa</username>
-    <password>Maks.reg</password>
+    <password>xxx</password>
     <configuration>
-        <email>zhouq@mayocase.com</email>
+        <email>jo@yohol.net</email>
     </configuration>
 </server>
 ```
