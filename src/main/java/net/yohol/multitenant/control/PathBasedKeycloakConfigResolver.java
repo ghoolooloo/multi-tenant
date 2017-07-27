@@ -25,10 +25,13 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.enterprise.context.ApplicationScoped;
+
 /**
  *
  * @author Juraci Paixão Kröhling <juraci at kroehling.de>
  */
+@ApplicationScoped
 public class PathBasedKeycloakConfigResolver implements KeycloakConfigResolver {
 
     private final Map<String, KeycloakDeployment> cache = new ConcurrentHashMap<String, KeycloakDeployment>();

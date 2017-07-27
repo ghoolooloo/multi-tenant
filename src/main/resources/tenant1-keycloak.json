@@ -4,7 +4,8 @@
   "ssl-required": "external",
   "resource": "multi-tenant",
   "credentials": {
-    "secret": "e44607e4-aadf-4dda-bf96-47b2baa1ff03"
+    "secret": "password"
   },
-  "use-resource-role-mappings": true
+  "use-resource-role-mappings": true,
+  "enable-cors": true
 }
